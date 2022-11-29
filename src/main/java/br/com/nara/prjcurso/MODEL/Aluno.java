@@ -1,6 +1,8 @@
 package br.com.nara.prjcurso.MODEL;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -20,6 +22,8 @@ public class Aluno {
     @JoinColumn(name="cursoid")
     private Curso curso;
 
+    private List<Aluno> alunos = new ArrayList<>();
+
     public Integer getId() {
         return id;
     }
@@ -31,6 +35,16 @@ public class Aluno {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
+    public String getNomealuno() {
+        return nomealuno;
+    }
+
+    public void setNomealuno(String nomealuno) {
+        this.nomealuno = nomealuno;
+    }
+
+    private String nomealuno;
 
     @Override
     public boolean equals(Object o) {
@@ -44,6 +58,4 @@ public class Aluno {
     public int hashCode() {
         return Objects.hash(id);
     }
-
-    private String nomealuno;
 }
