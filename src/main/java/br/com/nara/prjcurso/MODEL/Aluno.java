@@ -1,40 +1,23 @@
 package br.com.nara.prjcurso.MODEL;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
 @Entity
-@Table(name = "aluno")
+@Table(name="aluno")
 
 public class Aluno {
 
-    public Curso getCurso() {
-        return curso;
-    }
+    @Id
 
-    public void setCurso(Curso curso) {
-        this.curso = curso;
-    }
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+
+    private String nomealuno;
 
     @ManyToOne
     @JoinColumn(name="cursoid")
     private Curso curso;
-
-    private List<Aluno> alunos = new ArrayList<>();
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
 
     public String getNomealuno() {
         return nomealuno;
@@ -44,7 +27,21 @@ public class Aluno {
         this.nomealuno = nomealuno;
     }
 
-    private String nomealuno;
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Curso getCurso() {
+        return curso;
+    }
+
+    public void setCurso(Curso curso) {
+        this.curso = curso;
+    }
 
     @Override
     public boolean equals(Object o) {
